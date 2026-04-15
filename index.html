@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="calculator" aria-label="Calculator">
+      <div class="hero-copy">
+        <h1 class="title">Scientific Calculator</h1>
+      </div>
+      <div class="display-panel">
+        <div class="status-row">
+          <button class="mode-toggle" id="mode-toggle" type="button" aria-label="Angle mode toggle">DEG</button>
+          <span class="status-pill">SCI MODE</span>
+        </div>
+        <div class="expression" id="expression" aria-live="polite"></div>
+        <input type="text" id="display" readonly aria-label="Calculator display" value="0">
+      </div>
+      <div class="button-container">
+        <button class="button button-utility" data-action="clear">AC</button>
+        <button class="button button-utility" data-action="delete">DEL</button>
+        <button class="button button-scientific" data-value="(">(</button>
+        <button class="button button-scientific" data-value=")">)</button>
+        <button class="button button-operator" data-value="/">&divide;</button>
+
+        <button class="button button-scientific" data-value="sin(">sin</button>
+        <button class="button button-scientific" data-value="cos(">cos</button>
+        <button class="button button-scientific" data-value="tan(">tan</button>
+        <button class="button button-scientific" data-value="log(">log</button>
+        <button class="button button-operator" data-value="*">&times;</button>
+
+        <button class="button button-scientific" data-value="ln(">ln</button>
+        <button class="button button-scientific" data-value="sqrt(">&radic;</button>
+        <button class="button button-scientific" data-value="^">x<sup>y</sup></button>
+        <button class="button button-scientific" data-value="pi">&pi;</button>
+        <button class="button button-operator" data-value="-">-</button>
+
+        <button class="button" data-value="7">7</button>
+        <button class="button" data-value="8">8</button>
+        <button class="button" data-value="9">9</button>
+        <button class="button button-scientific" data-value="e">e</button>
+        <button class="button button-operator" data-value="+">+</button>
+
+        <button class="button" data-value="4">4</button>
+        <button class="button" data-value="5">5</button>
+        <button class="button" data-value="6">6</button>
+        <button class="button button-scientific" data-value="sqr(">x<sup>2</sup></button>
+        <button class="button button-scientific" data-value="inv(">1/x</button>
+
+        <button class="button" data-value="1">1</button>
+        <button class="button" data-value="2">2</button>
+        <button class="button" data-value="3">3</button>
+        <button class="button button-scientific" data-value="%">%</button>
+        <button class="button button-equals" data-action="calculate">=</button>
+
+        <button class="button button-zero" data-value="0">0</button>
+        <button class="button" data-value=".">.</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
