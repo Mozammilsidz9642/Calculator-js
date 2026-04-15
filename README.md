@@ -1,4 +1,4 @@
-# Calculator Standalone
+# Calculator 
 
 Simple calculator project made with HTML, CSS, and JavaScript.
 
