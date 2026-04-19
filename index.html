@@ -8,59 +8,144 @@
 </head>
 <body>
   <main class="app-shell">
-    <section id="calculator" aria-label="Calculator">
-      <div class="hero-copy">
-        <h1 class="title">Scientific Calculator</h1>
-      </div>
-      <div class="display-panel">
-        <div class="status-row">
-          <button class="mode-toggle" id="mode-toggle" type="button" aria-label="Angle mode toggle">DEG</button>
-          <span class="status-pill">SCI MODE</span>
+    <div class="calculator-layout">
+      <section id="calculator" aria-label="Calculator">
+        <div class="hero-copy">
+          <h1 class="title">Scientific Calculator</h1>
         </div>
-        <div class="expression" id="expression" aria-live="polite"></div>
-        <input type="text" id="display" readonly aria-label="Calculator display" value="0">
-      </div>
-      <div class="button-container">
-        <button class="button button-utility" data-action="clear">AC</button>
-        <button class="button button-utility" data-action="delete">DEL</button>
-        <button class="button button-scientific" data-value="(">(</button>
-        <button class="button button-scientific" data-value=")">)</button>
-        <button class="button button-operator" data-value="/">&divide;</button>
+        <div class="display-panel">
+          <div class="status-row">
+            <div class="status-actions">
+              <button class="mode-toggle" id="mode-toggle" type="button" aria-label="Angle mode toggle">DEG</button>
+              <button class="history-toggle" id="history-toggle" type="button" aria-controls="mobile-panels" aria-expanded="false">History</button>
+            </div>
+            <span class="status-pill">SCI MODE</span>
+          </div>
+          <div class="expression" id="expression" aria-live="polite"></div>
+          <input type="text" id="display" readonly aria-label="Calculator display" value="0">
+        </div>
+        <div class="mobile-toolbar" aria-label="Mobile tools">
+          <button class="mobile-tool-button history-toggle" id="mobile-history-toggle" type="button" aria-controls="mobile-panels" aria-expanded="false">History</button>
+          <button class="mobile-tool-button mobile-scientific-toggle" id="mobile-scientific-toggle" type="button" aria-pressed="false">Scientific</button>
+          <button class="mobile-tool-button" data-action="clear" type="button">AC</button>
+          <button class="mobile-tool-button" data-action="delete" type="button">DEL</button>
+        </div>
+        <div class="mobile-stage">
+          <div class="mobile-panels" id="mobile-panels">
+            <div class="mobile-panel mobile-keypad-panel">
+              <div class="mobile-keypad-wrapper">
+                <div class="mobile-scientific-grid">
+                  <button class="button mobile-calc-button" data-action="swap-last-two">⇆</button>
+                  <button class="button mobile-calc-button" data-action="toggle-angle">Rad</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="sqrt(">&radic;</button>
 
-        <button class="button button-scientific" data-value="sin(">sin</button>
-        <button class="button button-scientific" data-value="cos(">cos</button>
-        <button class="button button-scientific" data-value="tan(">tan</button>
-        <button class="button button-scientific" data-value="log(">log</button>
-        <button class="button button-operator" data-value="*">&times;</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="sin(">sin</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="cos(">cos</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="tan(">tan</button>
 
-        <button class="button button-scientific" data-value="ln(">ln</button>
-        <button class="button button-scientific" data-value="sqrt(">&radic;</button>
-        <button class="button button-scientific" data-value="^">x<sup>y</sup></button>
-        <button class="button button-scientific" data-value="pi">&pi;</button>
-        <button class="button button-operator" data-value="-">-</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="ln(">ln</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="log(">log</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="inv(">1/x</button>
 
-        <button class="button" data-value="7">7</button>
-        <button class="button" data-value="8">8</button>
-        <button class="button" data-value="9">9</button>
-        <button class="button button-scientific" data-value="e">e</button>
-        <button class="button button-operator" data-value="+">+</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="exp(">e<sup>x</sup></button>
+                  <button class="button mobile-calc-button button-scientific" data-value="sqr(">x<sup>2</sup></button>
+                  <button class="button mobile-calc-button button-scientific" data-value="^">x<sup>y</sup></button>
 
-        <button class="button" data-value="4">4</button>
-        <button class="button" data-value="5">5</button>
-        <button class="button" data-value="6">6</button>
-        <button class="button button-scientific" data-value="sqr(">x<sup>2</sup></button>
-        <button class="button button-scientific" data-value="inv(">1/x</button>
+                  <button class="button mobile-calc-button button-scientific" data-action="absolute">|x|</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="pi">&pi;</button>
+                  <button class="button mobile-calc-button button-scientific" data-value="e">e</button>
+                </div>
+                <div class="mobile-keypad-grid">
+                <button class="button mobile-calc-button button-utility" data-action="clear">C</button>
+                <button class="button mobile-calc-button button-scientific" data-action="paren">()</button>
+                <button class="button mobile-calc-button button-scientific" data-value="%">%</button>
 
-        <button class="button" data-value="1">1</button>
-        <button class="button" data-value="2">2</button>
-        <button class="button" data-value="3">3</button>
-        <button class="button button-scientific" data-value="%">%</button>
-        <button class="button button-equals" data-action="calculate">=</button>
+                <button class="button mobile-calc-button" data-value="7">7</button>
+                <button class="button mobile-calc-button" data-value="8">8</button>
+                <button class="button mobile-calc-button" data-value="9">9</button>
 
-        <button class="button button-zero" data-value="0">0</button>
-        <button class="button" data-value=".">.</button>
-      </div>
-    </section>
+                <button class="button mobile-calc-button" data-value="4">4</button>
+                <button class="button mobile-calc-button" data-value="5">5</button>
+                <button class="button mobile-calc-button" data-value="6">6</button>
+
+                <button class="button mobile-calc-button" data-value="1">1</button>
+                <button class="button mobile-calc-button" data-value="2">2</button>
+                <button class="button mobile-calc-button" data-value="3">3</button>
+
+                <button class="button mobile-calc-button" data-action="toggle-sign">+/-</button>
+                <button class="button mobile-calc-button" data-value="0">0</button>
+                <button class="button mobile-calc-button" data-value=".">.</button>
+                </div>
+              </div>
+            </div>
+            <div class="mobile-panel mobile-history-panel">
+              <div class="mobile-history-content">
+                <div class="mobile-history-list" id="mobile-history-list" role="list"></div>
+                <button class="clear-history-button mobile-clear-history-button" id="mobile-clear-history" type="button">Clear history</button>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-operator-rail" aria-label="Quick operators">
+            <button class="button mobile-rail-button button-operator" data-value="/">&divide;</button>
+            <button class="button mobile-rail-button button-operator" data-value="*">&times;</button>
+            <button class="button mobile-rail-button button-operator" data-value="-">-</button>
+            <button class="button mobile-rail-button button-operator" data-value="+">+</button>
+            <button class="button mobile-rail-button button-equals" data-action="calculate">=</button>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="button button-utility" data-action="clear">AC</button>
+          <button class="button button-utility" data-action="delete">DEL</button>
+          <button class="button button-scientific" data-value="(">(</button>
+          <button class="button button-scientific" data-value=")">)</button>
+          <button class="button button-operator" data-value="/">&divide;</button>
+
+          <button class="button button-scientific" data-value="sin(">sin</button>
+          <button class="button button-scientific" data-value="cos(">cos</button>
+          <button class="button button-scientific" data-value="tan(">tan</button>
+          <button class="button button-scientific" data-value="log(">log</button>
+          <button class="button button-operator" data-value="*">&times;</button>
+
+          <button class="button button-scientific" data-value="ln(">ln</button>
+          <button class="button button-scientific" data-value="sqrt(">&radic;</button>
+          <button class="button button-scientific" data-value="^">x<sup>y</sup></button>
+          <button class="button button-scientific" data-value="pi">&pi;</button>
+          <button class="button button-operator" data-value="-">-</button>
+
+          <button class="button" data-value="7">7</button>
+          <button class="button" data-value="8">8</button>
+          <button class="button" data-value="9">9</button>
+          <button class="button button-scientific" data-value="e">e</button>
+          <button class="button button-operator" data-value="+">+</button>
+
+          <button class="button" data-value="4">4</button>
+          <button class="button" data-value="5">5</button>
+          <button class="button" data-value="6">6</button>
+          <button class="button button-scientific" data-value="sqr(">x<sup>2</sup></button>
+          <button class="button button-scientific" data-value="inv(">1/x</button>
+
+          <button class="button" data-value="1">1</button>
+          <button class="button" data-value="2">2</button>
+          <button class="button" data-value="3">3</button>
+          <button class="button button-scientific" data-value="%">%</button>
+          <button class="button button-equals" data-action="calculate">=</button>
+
+          <button class="button button-zero" data-value="0">0</button>
+          <button class="button" data-value=".">.</button>
+        </div>
+      </section>
+
+      <aside class="history-panel" id="history-panel" aria-label="Calculation history" aria-hidden="false">
+        <div class="history-header">
+          <div>
+            <p class="history-label">Stored History</p>
+            <h2 class="history-title">Recent Calculations</h2>
+          </div>
+          <button class="clear-history-button" id="clear-history" type="button">Clear History</button>
+        </div>
+        <div class="history-list" id="history-list" role="list"></div>
+      </aside>
+    </div>
   </main>
 
   <script src="script.js"></script>
