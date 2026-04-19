@@ -434,6 +434,14 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {
+      // Ignore registration failures so calculator usage stays unaffected.
+    });
+  });
+}
+
 calculationHistory = calculationHistory.slice(-HISTORY_LIMIT);
 saveHistory();
 renderHistory();

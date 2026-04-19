@@ -1,0 +1,25 @@
+{
+  "name": "Scientific Calculator",
+  "short_name": "Calculator",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0a0d0a",
+  "background_color": "#0a0d0a",
+  "description": "A mobile-friendly scientific calculator with history, offline support, and installable PWA experience.",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
