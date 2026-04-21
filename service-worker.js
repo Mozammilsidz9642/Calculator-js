@@ -1,8 +1,11 @@
-const CACHE_VERSION = "v1.0.0";
+const CACHE_VERSION = "v1.4.0";
 const APP_CACHE = `scientific-calculator-${CACHE_VERSION}`;
 const APP_ASSETS = [
   "./",
   "./index.html",
+  "./about.html",
+  "./privacy.html",
+  "./contact.html",
   "./style.css",
   "./script.js",
   "./manifest.json",
@@ -35,6 +38,10 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
+  const requestUrl = new URL(event.request.url);
+  const isSameOrigin = requestUrl.origin === self.location.origin;
+  const isNavigationRequest = event.request.mode === "navigate";
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -43,15 +50,24 @@ self.addEventListener("fetch", (event) => {
 
       return fetch(event.request)
         .then((networkResponse) => {
-          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== "basic") {
+          if (!networkResponse || networkResponse.status !== 200) {
             return networkResponse;
           }
 
-          const responseClone = networkResponse.clone();
-          caches.open(APP_CACHE).then((cache) => cache.put(event.request, responseClone));
+          if (isSameOrigin) {
+            const responseClone = networkResponse.clone();
+            caches.open(APP_CACHE).then((cache) => cache.put(event.request, responseClone));
+          }
+
           return networkResponse;
         })
-        .catch(() => caches.match("./index.html"));
+        .catch(() => {
+          if (isNavigationRequest) {
+            return caches.match("./index.html");
+          }
+
+          return Response.error();
+        });
     })
   );
 });
