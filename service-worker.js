@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v1.4.0";
+const CACHE_VERSION = "v1.4.1";
 const APP_CACHE = `scientific-calculator-${CACHE_VERSION}`;
 const APP_ASSETS = [
   "./",
