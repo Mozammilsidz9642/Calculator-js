@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v1.4.1";
+const CACHE_VERSION = "v1.4.2";
 const APP_CACHE = `scientific-calculator-${CACHE_VERSION}`;
 const APP_ASSETS = [
   "./",
@@ -42,6 +42,22 @@ self.addEventListener("fetch", (event) => {
   const isSameOrigin = requestUrl.origin === self.location.origin;
   const isNavigationRequest = event.request.mode === "navigate";
 
+  if (isNavigationRequest) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200 && isSameOrigin) {
+            const responseClone = networkResponse.clone();
+            caches.open(APP_CACHE).then((cache) => cache.put("./index.html", responseClone));
+          }
+
+          return networkResponse;
+        })
+        .catch(() => caches.match("./index.html"))
+    );
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -61,13 +77,7 @@ self.addEventListener("fetch", (event) => {
 
           return networkResponse;
         })
-        .catch(() => {
-          if (isNavigationRequest) {
-            return caches.match("./index.html");
-          }
-
-          return Response.error();
-        });
+        .catch(() => Response.error());
     })
   );
 });
