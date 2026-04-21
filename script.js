@@ -34,7 +34,7 @@ const HISTORY_LIMIT = 1000;
 const HISTORY_SEPARATOR = " = ";
 const MOBILE_MEDIA_QUERY = "(max-width: 768px)";
 const PDF_FILE_NAME = "calculator-history.pdf";
-const PDF_BUTTON_DEFAULT_LABEL = "Dwn";
+const PDF_BUTTON_DEFAULT_LABEL = "PDF";
 const PDF_BUTTON_LOADING_LABEL = "Generating PDF...";
 const PDF_EXPORT_ACTIVE_CLASS = "is-exporting";
 const PDF_EXPORT_MARGIN_MM = 10;
